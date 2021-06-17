@@ -1,0 +1,17 @@
+{
+  "name": "twitchbot",
+  "version": "1.0.0",
+  "description": "metalcoffeebot",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "tmi.js": "^1.8.3"
+  }
+}
