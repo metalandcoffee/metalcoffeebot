@@ -11,3 +11,4 @@ https://twitchapps.com/tmi/
 Register an application to obtain a client ID and client secret.
 https://dev.twitch.tv/console
 
+https://jwalter-twitch.builtwithdark.com/myuserid?name=sociablesteve

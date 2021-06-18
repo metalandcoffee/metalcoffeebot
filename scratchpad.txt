@@ -1,0 +1,101 @@
+[nodemon] starting `node app.js`
+Successfully connected to the websocket
+{
+  clientId: 'QizNojXXwRp-hZRzAAC6',
+  channelId: '60281f0cd552f41f209987f1',
+  project: 'realtime',
+  message: 'You are in a maze of dank memes, all alike.'
+}
+[nodemon] restarting due to changes...
+[nodemon] starting `node app.js`
+Successfully connected to the websocket
+{
+  clientId: '9I7zI6y4hvpS7BlEAit3',
+  channelId: '60281f0cd552f41f209987f1',
+  project: 'realtime',
+  message: 'You are in a maze of dank memes, all alike.'
+}
+{
+  _id: '60cd0708f44871deead68df9',
+  channel: '60281f0cd552f41f209987f1',
+  type: 'follow',
+  provider: 'twitch',
+  flagged: false,
+  data: {
+    username: 'sociablesteve',
+    providerId: '76884091',
+    displayName: 'SociableSteve',
+    quantity: 0,
+    avatar: 'https://cdn.streamelements.com/static/default-avatar.png'
+  },
+  createdAt: '2021-06-18T20:50:16.186Z',
+  updatedAt: '2021-06-18T20:50:16.186Z'
+}
+{
+  _id: '60cd0771c160a70ab9388928',
+  channel: '60281f0cd552f41f209987f1',
+  type: 'raid',
+  provider: 'twitch',
+  flagged: false,
+  data: {
+    username: 'matty_twoshoes',
+    providerId: '556670211',
+    displayName: 'Matty_TwoShoes',
+    amount: 5,
+    quantity: 0,
+    avatar: 'https://cdn.streamelements.com/static/default-avatar.png'
+  },
+  createdAt: '2021-06-18T20:52:01.869Z',
+  updatedAt: '2021-06-18T20:52:01.869Z'
+}
+{
+  _id: '60cd0771caa469a08ec06b36',
+  channel: '60281f0cd552f41f209987f1',
+  type: 'host',
+  provider: 'twitch',
+  flagged: false,
+  data: {
+    username: 'matty_twoshoes',
+    providerId: '556670211',
+    displayName: 'Matty_TwoShoes',
+    amount: 5,
+    quantity: 0,
+    avatar: 'https://cdn.streamelements.com/static/default-avatar.png'
+  },
+  createdAt: '2021-06-18T20:52:01.985Z',
+  updatedAt: '2021-06-18T20:52:01.985Z'
+}
+{
+  _id: '60cd077e14f494933d0c2e16',
+  channel: '60281f0cd552f41f209987f1',
+  type: 'follow',
+  provider: 'twitch',
+  flagged: false,
+  data: {
+    username: 'alvin5how',
+    providerId: '76988212',
+    displayName: 'alvin5How',
+    quantity: 0,
+    avatar: 'https://cdn.streamelements.com/static/default-avatar.png'
+  },
+  createdAt: '2021-06-18T20:52:14.640Z',
+  updatedAt: '2021-06-18T20:52:14.640Z'
+}
+{
+  _id: '60cd078082190b429ad2c915',
+  channel: '60281f0cd552f41f209987f1',
+  type: 'cheer',
+  provider: 'twitch',
+  flagged: false,
+  data: {
+    username: 'whitep4nth3r',
+    providerId: '469006291',
+    displayName: 'whitep4nth3r',
+    amount: 3,
+    message: 'PJSalt1 PJSalt1 PJSalt1 raid bits!',
+    quantity: 0,
+    avatar: 'https://cdn.streamelements.com/static/default-avatar.png'
+  },
+  createdAt: '2021-06-18T20:52:16.576Z',
+  updatedAt: '2021-06-18T20:52:16.576Z'
+}
