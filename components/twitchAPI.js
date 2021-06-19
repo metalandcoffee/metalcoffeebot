@@ -4,7 +4,6 @@
  * @link https://dev.twitch.tv/docs/api/reference
  */
 
-
 import { config } from 'dotenv';
 import fetch from 'node-fetch';
 

@@ -3,7 +3,7 @@ import getTwitchChannelInfo from './twitchAPI.js';
 
 const shoutoutsGiven = [];
 
-// Called every time a message comes in.
+// Determine if chatter is on Metalhead VIP list and give shoutout (if not given yet).
 export async function autoShoutOut(channel, tags, message, self) {
 
   // Ignore messages from the bot.
@@ -24,6 +24,7 @@ export async function autoShoutOut(channel, tags, message, self) {
     if (streamer.toLowerCase() === currentChatter.toLowerCase()) {
       
       if (!shoutoutsGiven.includes(streamer.toLowerCase())) {
+        
         // Call Twitch API for channel information.
         const broadcasterID = tags['user-id'];
         const channelInfo = await getTwitchChannelInfo(broadcasterID);
