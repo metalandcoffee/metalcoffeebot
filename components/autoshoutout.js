@@ -19,7 +19,7 @@ export async function autoShoutOut(channel, tags, message, self) {
   
   // Loop through each entry on auto-shoutout list.
   for (const streamer in soList) {
-//console.log
+
     // Check if the current chatter is in the auto-shoutout list (metalhead-vips.json).
     if (streamer.toLowerCase() === currentChatter.toLowerCase()) {
       
