@@ -1,4 +1,11 @@
-import { config } from "dotenv";
+/**
+ * Connect to Twitch API.
+ * 
+ * @link https://dev.twitch.tv/docs/api/reference
+ */
+
+
+import { config } from 'dotenv';
 import fetch from 'node-fetch';
 
 // Load environment variables.
@@ -20,6 +27,11 @@ const getAccessToken = async () => {
     }
 };
 
+/**
+ * @param {string} broadcaster_id 
+ * @returns object/string
+ * @link https://dev.twitch.tv/docs/api/reference#get-channel-information
+ */
 const getTwitchChannelInfo = async ( broadcaster_id ) => {
     const tokenResponse = await getAccessToken();
     const fetchOptions = {

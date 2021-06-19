@@ -8,7 +8,7 @@ config();
 
 // Define configuration options.
 const opts = {
-    //options: { debug:true },
+    options: { debug:true },
   identity: {
     username: process.env.BOT_USERNAME,
     password: process.env.OAUTH_TOKEN
@@ -19,16 +19,12 @@ const opts = {
 // Create a client with our options.
 const client = new tmi.client(opts);
 
-// Register our event handlers (defined below)
-client.on("message", autoShoutOut.bind(client));
-//client.on("connected", onConnectedHandler);
-
-// Connect to Twitch:
-await client.connect();
-
-//client.say(process.env.CHANNEL_NAME,"Hi there");
-
-// Called every time the bot connects to Twitch chat
-function onConnectedHandler(addr, port) {
-  console.log(`* Connected to ${addr}:${port}`);
+// Called everytime the bot connects to Twitch chat.
+const onConnected = (addr, port) => {
+  client.say(process.env.CHANNEL_NAME, `Hi there.`);
 }
+
+client.on(`connected`, onConnected);
+
+// Called everytime a message is sent in Twitch chat.
+client.on(`message`, autoShoutOut.bind(client));
