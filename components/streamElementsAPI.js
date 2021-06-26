@@ -43,5 +43,6 @@ socket.on('unauthorized', console.error);
 
 
 socket.on('event', (data) => {
-    console.log(data);
+    // Data collecting for future enhancements.
+    fs.appendFileSync(`streamElementslog.txt`, data);
 });

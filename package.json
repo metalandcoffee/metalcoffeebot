@@ -1,10 +1,10 @@
 {
-  "name": "twitchbot",
+  "name": "metalcoffeebot",
   "version": "1.0.0",
-  "description": "metalcoffeebot",
+  "description": "Chatbot for twitch.tv/metalandcoffee_",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
