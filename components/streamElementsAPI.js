@@ -3,7 +3,7 @@
  * 
  * @link https://dev.streamelements.com/docs/kappa/docs/Websockets.md
  */
-
+ import fs from 'fs';
 import { config } from "dotenv";
 import io from 'socket.io-client';
 
@@ -44,5 +44,9 @@ socket.on('unauthorized', console.error);
 
 socket.on('event', (data) => {
     // Data collecting for future enhancements.
-    fs.appendFileSync(`streamElementslog.txt`, data);
+    fs.appendFileSync(`streamElementslog.txt`, JSON.stringify(data));
+
+
+    // If event is follow, send welcome message to chat.
+    //console.log(data.type === 'follow'));
 });
