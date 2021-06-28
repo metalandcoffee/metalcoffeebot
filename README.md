@@ -30,6 +30,12 @@ CLIENT_ID=1234567890
 CLIENT_SECRET=1234567890
 SE_JWT=1234567890
 ```
+
+After creating the file, run `npm start` to start up the chatbot. You should see an initialization message in your chat from your bot (i.e. 'Hi there' ) as confirmation that a connection has been made. 
+
+### **Functionality**
+Chatbot will automatically provide a shoutout to chatters who are listed in the vip constant in `metalhead-vips.js`. This functionality requires tmi.js and the Twitch API. 
+_More features coming soon..._
 ## Resources
 If you need to quickly figure the broadcaster ID based on the username.
 https://jwalter-twitch.builtwithdark.com/myuserid?name=sociablesteve

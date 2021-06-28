@@ -1,8 +1,8 @@
 import fs from 'fs';
 import { config } from 'dotenv';
 import tmi from 'tmi.js';
-import './components/twitchAPI.js';
-import './components/streamElementsAPI.js';
+import './vendor/twitchAPI.js';
+import './vendor/streamElementsAPI.js';
 import initAutoshoutout from './components/autoshoutout.js';
 
 config();
@@ -32,9 +32,6 @@ const onConnected = (addr, port) => {
 }
 
 client.on(`connected`, onConnected);
-
-// Called everytime a message is sent in Twitch chat.
-//client.on(`message`, autoShoutOut.bind(client));
 
 // Logging
 client.on(`join`, (channel, username, self) => {
