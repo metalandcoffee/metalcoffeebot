@@ -5,7 +5,7 @@ import getTwitchChannelInfo from '../vendor/twitchAPI.js';
 const shoutoutsGiven = [];
 
 // Determine if chatter is on Metalhead VIP list and give shoutout (if not given yet).
-const autoShoutOut = async (channel, tags, message, self) => {
+async function autoShoutOut(channel, tags, message, self) {
 
   // Ignore messages from the bot.
   if (self) {
@@ -30,7 +30,7 @@ const autoShoutOut = async (channel, tags, message, self) => {
         const broadcasterID = tags['user-id'];
         const channelInfo = await getTwitchChannelInfo(broadcasterID);
 
-        global.tmiClient.say(channel, `Metalhead VIP alert 🚨 @${tags['display-name']} is here and deserves your follow! They were last streaming ${channelInfo.data[0].game_name}. https://twitch.tv/${tags.username} 🌟`);
+        this.say(channel, `Metalhead VIP alert 🚨 @${tags['display-name']} is here and deserves your follow! They were last streaming ${channelInfo.data[0].game_name}. https://twitch.tv/${tags.username} 🌟`);
 
         // Record given shoutout.
         shoutoutsGiven.push(streamer.toLowerCase());
@@ -40,10 +40,9 @@ const autoShoutOut = async (channel, tags, message, self) => {
       break;
     }  
   }
-};
+}
 
 // Initialize autoshoutout check on each message sent in chat.
-const init = () => {
-  global.tmiClient.on(`message`, autoShoutOut);
-};
-export default init;
+export default function init() {
+  this.on(`message`, autoShoutOut);
+}

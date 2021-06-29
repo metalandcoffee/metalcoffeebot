@@ -37,5 +37,7 @@ After creating the file, run `npm start` to start up the chatbot. You should see
 Chatbot will automatically provide a shoutout to chatters who are listed in the vip constant in `metalhead-vips.js`. This functionality requires tmi.js and the Twitch API. 
 _More features coming soon..._
 ## Resources
+If running on Glitch platform and are running into issues, trying running the `enable-pnpm` command in terminal.
+
 If you need to quickly figure the broadcaster ID based on the username.
 https://jwalter-twitch.builtwithdark.com/myuserid?name=sociablesteve

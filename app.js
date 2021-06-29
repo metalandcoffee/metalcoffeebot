@@ -25,10 +25,12 @@ client.connect();
 
 // On successfully connection, make TMI client a global variable (accessible anywhere).
 const onConnected = (addr, port) => {
-  console.log(`connected to Twitch chat.`);
+  console.log(`Connected to Twitch chat.`);
   client.say(process.env.CHANNEL_NAME, `Hi there.`);
-  global.tmiClient = client;
-  initAutoshoutout();
+
+  // Bind TMI client to functionality where needed.
+  const autoshoutouts = initAutoshoutout.bind(client);
+  autoshoutouts();
 }
 
 client.on(`connected`, onConnected);
