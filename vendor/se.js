@@ -6,20 +6,13 @@
  import fs from 'fs';
 import { config } from 'dotenv';
 import io from 'socket.io-client';
-import initFollowNotif from '../components/follow.js';
 
 // Load environment variables.
 config();
 
-const socket = io('https://realtime.streamelements.com', {
-    transports: ['websocket']
-});
-
 const onConnect = () => {
-    socket.emit('authenticate', {method: 'jwt', token: process.env.SE_JWT});
+    seSocket.emit('authenticate', {method: 'jwt', token: process.env.SE_JWT});
     console.log('Successfully connected to the websocket');
-    const newFollows = initFollowNotif.bind(socket);
-    newFollows();
 };
 
 const onDisconnect = (reason) => {
@@ -27,25 +20,23 @@ const onDisconnect = (reason) => {
     console.log(reason);
 };
 
-function onAuthenticated(data) {
+const onAuthenticated = (data) => {
     const {
         channelId
     } = data;
     console.log(`Successfully connected to channel ${channelId}`);
-}
+};
+
+export const seSocket = io('https://realtime.streamelements.com', {
+    transports: ['websocket']
+});
 
 // Socket connected.
-socket.on('connect', onConnect);
+seSocket.on('connect', onConnect);
 
 // Socket got disconnected.
-socket.on('disconnect', onDisconnect);
+seSocket.on('disconnect', onDisconnect);
 
 // Socket is authenticated.
-socket.on('authenticated', onAuthenticated);
-socket.on('unauthorized', console.error);
-
-
-socket.on('event', (data) => {
-    // Data collecting for future enhancements.
-    fs.appendFileSync(`streamElementslog.txt`, JSON.stringify(data));
-});
+seSocket.on('authenticated', onAuthenticated);
+seSocket.on('unauthorized', console.error);

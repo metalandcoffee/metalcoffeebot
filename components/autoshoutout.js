@@ -1,4 +1,5 @@
 import { vip } from './metalhead-vips.js';
+import { tmi } from './../vendor/tmi.js';
 import getTwitchChannelInfo from '../vendor/twitchAPI.js';
 
 // Track given shoutouts.
@@ -30,7 +31,7 @@ async function autoShoutOut(channel, tags, message, self) {
         const broadcasterID = tags['user-id'];
         const channelInfo = await getTwitchChannelInfo(broadcasterID);
 
-        this.say(channel, `Metalhead VIP alert 🚨 @${tags['display-name']} is here and deserves your follow! They were last streaming ${channelInfo.data[0].game_name}. https://twitch.tv/${tags.username} 🌟`);
+        tmi.say(channel, `Metalhead VIP alert 🚨 @${tags['display-name']} is here and deserves your follow! They were last streaming ${channelInfo.data[0].game_name}. https://twitch.tv/${tags.username} 🌟`);
 
         // Record given shoutout.
         shoutoutsGiven.push(streamer.toLowerCase());
@@ -43,6 +44,5 @@ async function autoShoutOut(channel, tags, message, self) {
 }
 
 // Initialize autoshoutout check on each message sent in chat.
-export default function init() {
-  this.on(`message`, autoShoutOut);
-}
+tmi.on(`message`, autoShoutOut);
+

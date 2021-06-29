@@ -1,13 +1,13 @@
-// Determine if chatter is on Metalhead VIP list and give shoutout (if not given yet).
-function newFollowNotif(channel, tags, message, self) {
+import { tmi } from './../vendor/tmi.js';
+import { seSocket } from './../vendor/se.js';
+import { config } from 'dotenv';
 
-}
-  
-  // Initialize autoshoutout check on each message sent in chat.
-  export default function initFollowNotif() {
-    console.log('Initialized new follower notifications.');
-    this.on('event', (data) => {
-        // Data collecting for future enhancements.
-        console.log('stream elements event happened');
-    });
-  }
+// Load environment variables.
+config();
+
+seSocket.on('event', (data) => {
+   if ( `follow` === data.type ) {
+    console.log('New follower!');
+    tmi.say(process.env.CHANNEL_NAME, `Welcome to the MC Lounge, ${data.data.displayName} metala19Cheers`);
+   }
+});
