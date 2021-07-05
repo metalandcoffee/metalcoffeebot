@@ -31,7 +31,7 @@ const getAccessToken = async () => {
  * @returns object/string
  * @link https://dev.twitch.tv/docs/api/reference#get-channel-information
  */
-const getTwitchChannelInfo = async ( broadcaster_id ) => {
+export const getTwitchChannelInfo = async ( broadcaster_id ) => {
     const tokenResponse = await getAccessToken();
     const fetchOptions = {
         headers: {
@@ -50,5 +50,28 @@ const getTwitchChannelInfo = async ( broadcaster_id ) => {
 
     return 'Failed to get access token';
 };
-export default getTwitchChannelInfo;
 
+/**
+ * @param {string} broadcaster_id 
+ * @returns object/string
+ * @link https://dev.twitch.tv/docs/v5/reference/users#get-user-by-id
+ */
+ export const getUserInfo = async ( broadcaster_id ) => {
+    const tokenResponse = await getAccessToken();
+    const fetchOptions = {
+        headers: {
+            "Client-Id": process.env.CLIENT_ID,
+            Authorization: `Bearer ${tokenResponse.access_token}`,
+        },
+    };
+    if (tokenResponse.access_token) {
+        const usersResponse = await fetch(
+            `https://api.twitch.tv/kraken/users/${broadcaster_id}`,
+            fetchOptions,
+        );
+        const user = await usersResponse.json();
+        return user;
+    }
+
+    return 'Failed to get access token';
+};

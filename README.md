@@ -41,3 +41,6 @@ If running on Glitch platform and are running into issues, trying running the `e
 
 If you need to quickly figure the broadcaster ID based on the username.
 https://jwalter-twitch.builtwithdark.com/myuserid?name=sociablesteve
+
+## tmi.js Events
+https://github.com/tmijs/docs/blob/gh-pages/_posts/v1.4.2/2019-03-03-Events.md

@@ -5,6 +5,7 @@ import { seSocket } from './vendor/se.js';
 
 import './components/follow.js';
 import './components/autoshoutout.js';
+import './components/raid.js';
 
 // Load environment variables.
 config();

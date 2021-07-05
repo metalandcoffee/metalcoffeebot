@@ -1,6 +1,6 @@
 import { vip } from './metalhead-vips.js';
 import { tmi } from './../vendor/tmi.js';
-import getTwitchChannelInfo from '../vendor/twitchAPI.js';
+import { getTwitchChannelInfo } from '../vendor/twitchAPI.js';
 
 // Track given shoutouts.
 const shoutoutsGiven = [];

@@ -8,6 +8,6 @@ config();
 seSocket.on('event', (data) => {
    if ( `follow` === data.type ) {
     console.log(`New follower ${data.data.displayName}`);
-    tmi.say(process.env.CHANNEL_NAME, `Welcome to the MC Lounge, ${data.data.displayName} metala19Cheers`);
+    tmi.say(process.env.CHANNEL_NAME, `Welcome to the MC Lounge, @${data.data.displayName} metala19Cheers Coffee is in the back.`);
    }
 });
