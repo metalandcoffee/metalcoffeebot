@@ -21,11 +21,27 @@ const onConnected = (addr, port) => {
 tmi.on(`connected`, onConnected);
 
 // Logging.
+const today = new Date();
+const todayStr = today.toLocaleDateString('en-US').replaceAll('/', '-');
+let viewers = [];
+try {
+  viewers = fs.readFileSync(`logs/log-${todayStr}.txt`, `utf8`);
+  viewers = viewers.split('\n');
+  console.log(viewers);
+} catch (err) {
+  console.error(err);
+}
+
+
 tmi.on(`join`, (channel, username, self) => {
-  const today = new Date();
-  fs.appendFileSync(`log.txt`, `[${today.toLocaleString('en-US', { timeZone: 'America/New_York' })}] ${username} has joined channel. \n`);
+
+  // If not in viewers array, add and write to file.
+  if (!viewers.includes(username)) {
+    viewers.push(username);
+    fs.appendFileSync(`logs/log-${todayStr}.txt`, `${username}\n`);
+  }
 });
 seSocket.on('event', (data) => {
   // Data collecting for future enhancements.
-  fs.appendFileSync(`streamElementslog.txt`, JSON.stringify(data));
+  fs.appendFileSync(`logs/streamElementslog.txt`, JSON.stringify(data));
 });
