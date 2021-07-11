@@ -6,7 +6,7 @@ config();
 
 // Define configuration options.
 const opts = {
-  options: { debug:true },
+  options: {},
 identity: {
   username: process.env.BOT_USERNAME,
   password: process.env.OAUTH_TOKEN

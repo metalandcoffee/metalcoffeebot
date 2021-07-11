@@ -3,7 +3,7 @@
  * 
  * @link https://dev.streamelements.com/docs/kappa/docs/Websockets.md
  */
- import fs from 'fs';
+import { logColorMsg } from './../helpers.js';
 import { config } from 'dotenv';
 import io from 'socket.io-client';
 
@@ -12,19 +12,19 @@ config();
 
 const onConnect = () => {
     seSocket.emit('authenticate', {method: 'jwt', token: process.env.SE_JWT});
-    console.log('Successfully connected to the websocket');
+    logColorMsg('Successfully connected to the websocket');
 };
 
 const onDisconnect = (reason) => {
-    console.log('Disconnected from the websocket');
-    console.log(reason);
+    logColorMsg('Disconnected from the websocket');
+    logColorMsg(reason);
 };
 
 const onAuthenticated = (data) => {
     const {
         channelId
     } = data;
-    console.log(`Successfully connected to channel ${channelId}`);
+    logColorMsg(`Successfully connected to channel ${channelId}`);
 };
 
 export const seSocket = io('https://realtime.streamelements.com', {

@@ -6,6 +6,7 @@ import { tmi } from './../vendor/tmi.js';
 import { seSocket } from './../vendor/se.js';
 import { getTwitchChannelInfo } from '../vendor/twitchAPI.js';
 import { config } from 'dotenv';
+import { logColorMsg } from './../helpers.js';
 
 // Load environment variables.
 config();
@@ -17,7 +18,7 @@ const raidWelcome = async (data) => {
       const broadcasterID = data.data.providerId;
       const channelInfo   = await getTwitchChannelInfo(broadcasterID);
 
-      console.log(`New raid... ${data.data.displayName}`);
+      logColorMsg(`New raid... ${data.data.displayName}`);
 
       setTimeout(function() {
          tmi.say(process.env.CHANNEL_NAME, `Thanks so much for raiding, @${data.data.displayName} ✨ metala19Hype metala19Hype metala19Hype metala19Hype metala19Hype Welcome to the MC Lounge, raiders! Coffee is in the back. 💀 ☕️ Please remember to remove the '?referral=raid' from your URL so that your view counts!`);

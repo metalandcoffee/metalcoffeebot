@@ -22,7 +22,7 @@ const getAccessToken = async () => {
 
         return response.json();
     } catch (error) {
-        console.log(error);
+        logColorMsg(error);
     }
 };
 
