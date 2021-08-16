@@ -44,7 +44,7 @@ tmi.on(`message`, function(channel, tags, message, self) {
 // On successful connection...
 const onConnected = (addr, port) => {
   logColorMsg(`Connected to Twitch chat.`);
-  //tmi.say(process.env.CHANNEL_NAME, `Hi there.`);
+  tmi.say(process.env.CHANNEL_NAME, `Hi there.`);
 }
 tmi.on(`connected`, onConnected);
 
