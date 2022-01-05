@@ -1,0 +1,8 @@
+{
+	"follow": {
+		"message": "If you're having a good time, don't forget to hit that follow button 🤗✨",
+		"timeIntervalInMinutes": 10,
+		"chatLines": 5,
+        "expiration": 123456789
+	}
+}

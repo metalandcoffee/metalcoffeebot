@@ -10,14 +10,15 @@ import { seSocket } from './vendor/se.js';
 import './components/follow.js';
 import './components/autoshoutout.js';
 import './components/raid.js';
+import './components/commands.js';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname  = path.dirname(__filename); 
+const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
-console.log( __dirname, __filename );
+console.log(__dirname, __filename);
 
 app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/views/index.html`);
@@ -35,8 +36,8 @@ config();
 tmi.connect();
 
 // Temp Function
-tmi.on(`message`, function(channel, tags, message, self) {
-  if ( ! self ) {
+tmi.on(`message`, function (channel, tags, message, self) {
+  if (!self) {
     logColorMsg(`${tags.username}: ${message}`);
   }
 });
@@ -44,7 +45,7 @@ tmi.on(`message`, function(channel, tags, message, self) {
 // On successful connection...
 const onConnected = (addr, port) => {
   logColorMsg(`Connected to Twitch chat.`);
-  tmi.say(process.env.CHANNEL_NAME, `Hi there.`);
+  //tmi.say(process.env.CHANNEL_NAME, `Hi there.`);
 }
 tmi.on(`connected`, onConnected);
 
