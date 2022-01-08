@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 function init() {
-    let timers = fs.readFileSync('./components/timers.json', 'utf-8');
+    let timers = fs.readFileSync('./components/tmp/timers.json', 'utf-8');
     const now = new Date();
     for (let prop in timers) {
         // Check to see if expiration date is in the past.
