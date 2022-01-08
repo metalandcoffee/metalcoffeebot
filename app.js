@@ -50,9 +50,7 @@ tmi.on(`connected`, onConnected);
 
 // Logging.
 const today = new Date();
-console.log(today);
 const todayStr = today.toLocaleDateString().split('/').join('-');
-console.log(todayStr);
 let viewers = [];
 try {
   viewers = fs.readFileSync(`logs/log-${todayStr}.txt`, `utf8`);

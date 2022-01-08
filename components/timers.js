@@ -8,8 +8,8 @@ function init() {
         // Check to see if expiration date is in the past.
         const expDateInMs = parsedTimers[prop].expirationDate;
         if (nowInMs > expDateInMs) {
-            const nextTimestamp = expDateInMs + (parsedTimers[prop].timeIntervalInMinutes * 1000 * 60 );
-            parsedTimers[prop].expirationDate = nowInMs + nextTimestamp
+            const nextTimestamp = nowInMs + (parsedTimers[prop].timeIntervalInMinutes * 1000 * 60 );
+            parsedTimers[prop].expirationDate = nextTimestamp
         }
     }
     
