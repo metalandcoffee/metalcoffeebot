@@ -3,19 +3,18 @@ import fs from 'fs';
 function init() {
     let timers = fs.readFileSync('./components/tmp/timers.json', 'utf-8');
     let parsedTimers = JSON.parse(timers);
-    const now = new Date();
+    const nowInMs = Number(new Date());
     for (let prop in parsedTimers) {
         // Check to see if expiration date is in the past.
-        const expDate = parsedTimers[prop].expirationDate;
-        console.log(prop);
-        if (now > expDate) {
-            let timerExp = new Date(now);
-            timerExp.setMinutes(now.getMinutes() + parsedTimers[prop].timeIntervalInMinutes);
+        const expDateInMs = parsedTimers[prop].expirationDate;
+        if (nowInMs > expDateInMs) {
+            const nextTimestamp = expDateInMs + (parsedTimers[prop].timeIntervalInMinutes * 1000 * 60 );
+            parsedTimers[prop].expirationDate = nowInMs + nextTimestamp
         }
     }
-    console.log(parsedTimers);
-    let stringifiedTimers = JSON.stringify(parsedTimers)
-    fs.writeFile('./components/tmp/timers.json', timers, err =>{ 
+    
+    const stringifiedTimers = JSON.stringify(parsedTimers)
+    fs.writeFile('./components/tmp/timers.json', stringifiedTimers, err =>{ 
         if (err) return console.log(err);
     }) // , function writeJSON(err) {
         // if (err) return console.log(err);
