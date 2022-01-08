@@ -4,7 +4,7 @@
 	"description": "Chatbot for twitch.tv/metalandcoffee_",
 	"main": "app.js",
 	"scripts": {
-		"start": "nodemon app.js --ignore 'components/*.json,components/tmp/*.json'",
+		"start": "nodemon app.js --ignore components/tmp/",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"type": "module",
