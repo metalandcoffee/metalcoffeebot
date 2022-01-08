@@ -8,17 +8,16 @@ import { tmi } from './vendor/tmi.js';
 import { logColorMsg } from './helpers.js';
 import { seSocket } from './vendor/se.js';
 import './components/follow.js';
-import './components/autoshoutout.js';
+//import './components/autoshoutout.js';
 import './components/raid.js';
 import './components/commands.js';
+import './components/timers.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = 3001;
-
-console.log(__dirname, __filename);
 
 app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/views/index.html`);
