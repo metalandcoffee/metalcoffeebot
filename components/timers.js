@@ -15,11 +15,10 @@ function init() {
     
     const stringifiedTimers = JSON.stringify(parsedTimers)
     fs.writeFile('./components/tmp/timers.json', stringifiedTimers, err =>{ 
+        console.log(parsedTimers);
+        console.log('writing to timers.json');
         if (err) return console.log(err);
-    }) // , function writeJSON(err) {
-        // if (err) return console.log(err);
-        // console.log(JSON.stringify(timers));
-        // console.log('writing to timers.json');
+    }) 
 }
 
 init();
