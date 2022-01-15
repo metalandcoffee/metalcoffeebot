@@ -1,14 +1,16 @@
+// External dependencies.
 import fs from 'fs';
 import { config } from 'dotenv';
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
 import { tmi } from './vendor/tmi.js';
 import { logColorMsg } from './helpers.js';
 import { seSocket } from './vendor/se.js';
+
+// Internal dependencies.
 import './components/follow.js';
-import './components/autoshoutout.js';
+//import './components/autoshoutout.js';
 import './components/raid.js';
 import './components/commands.js';
 import './components/timers.js';
@@ -16,17 +18,18 @@ import './components/timers.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Express functions.
 const app = express();
 const port = 3001;
-
 app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/views/index.html`);
-})
+});
+// Express: Serve images, CSS files, and JavaScript files in a directory named public.
+app.use(express.static(__dirname + '/public'));
 
 app.listen(port, () => {
   logColorMsg(`Example app listening at http://localhost:${port}`);
 })
-
 
 // Load environment variables.
 config();
