@@ -10,7 +10,7 @@ import { seSocket } from './vendor/se.js';
 
 // Internal dependencies.
 import './components/follow.js';
-//import './components/autoshoutout.js';
+import './components/autoshoutout.js';
 import './components/raid.js';
 import './components/commands.js';
 import './components/timers.js';
@@ -38,16 +38,16 @@ config();
 tmi.connect();
 
 // Temp Function
-// tmi.on(`message`, function (channel, tags, message, self) {
-//   if (!self) {
-//     logColorMsg(`${tags.username}: ${message}`);
-//   }
-// });
+tmi.on(`message`, function (channel, tags, message, self) {
+  if (!self) {
+    logColorMsg(`${tags.username}: ${message}`);
+  }
+});
 
 // On successful connection...
 const onConnected = (addr, port) => {
   logColorMsg(`Connected to Twitch chat.`);
-  //tmi.say(process.env.CHANNEL_NAME, `Hi there.`);
+  tmi.say(process.env.CHANNEL_NAME, `Hi there.`);
 }
 tmi.on(`connected`, onConnected);
 
