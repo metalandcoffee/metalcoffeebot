@@ -4,7 +4,6 @@ import { tmi } from './../vendor/tmi.js';
 
 // Internal dependencies.
 import { getTwitchChannelInfo, getUserInfo } from '../vendor/twitchAPI.js';
-import { badges } from "tmi.js/lib/parser";
 
 const require = createRequire(import.meta.url);
 const commands = require('./commands.json');
