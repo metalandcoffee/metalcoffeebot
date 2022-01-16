@@ -6,12 +6,13 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { tmi } from './vendor/tmi.js';
 import { logColorMsg } from './helpers.js';
-import { seSocket } from './vendor/se.js';
+//import { seSocket } from './vendor/se.js';
+import { tau } from './vendor/tau.js';
 
 // Internal dependencies.
-import './components/follow.js';
+//import './components/follow.js';
 import './components/autoshoutout.js';
-import './components/raid.js';
+//import './components/raid.js';
 import './components/commands.js';
 import './components/timers.js';
 
@@ -72,7 +73,7 @@ tmi.on(`join`, (channel, username, self) => {
     fs.appendFileSync(`logs/log-${todayStr}.txt`, `${username}\n`);
   }
 });
-seSocket.on('event', (data) => {
-  // Data collecting for future enhancements.
-  fs.appendFileSync(`logs/streamElementslog.txt`, JSON.stringify(data));
-});
+// seSocket.on('event', (data) => {
+//   // Data collecting for future enhancements.
+//   fs.appendFileSync(`logs/streamElementslog.txt`, JSON.stringify(data));
+// });
