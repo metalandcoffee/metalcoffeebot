@@ -1,14 +1,11 @@
-import { tmi } from './../vendor/tmi.js';
-import { seSocket } from './../vendor/se.js';
+import { tmi } from '../vendor/tmi.js';
 import { config } from 'dotenv';
-import { logColorMsg } from './../helpers.js';
+import { logColorMsg } from '../helpers.js';
 
 // Load environment variables.
 config();
 
-seSocket.on('event', (data) => {
-   if ( `follow` === data.type ) {
-      logColorMsg(`New follower ${data.data.displayName}`);
-    tmi.say(process.env.CHANNEL_NAME, `Welcome to the MC Lounge, @${data.data.displayName} metala19Cheers Coffee is in the back.`);
-   }
-});
+export default function followNotif(username) {
+   logColorMsg(`New follower ${username}`);
+   tmi.say(process.env.CHANNEL_NAME, `Welcome to the MC Lounge, @${username} metala19Cheers Coffee is in the back.`);
+}

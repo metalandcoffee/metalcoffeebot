@@ -7,14 +7,12 @@ import { fileURLToPath } from 'url';
 import { tmi } from './vendor/tmi.js';
 import { logColorMsg } from './helpers.js';
 //import { seSocket } from './vendor/se.js';
-import { tau } from './vendor/tau.js';
+import connectTAU from './vendor/tau.js';
 
 // Internal dependencies.
-//import './components/follow.js';
-import './components/autoshoutout.js';
-//import './components/raid.js';
+//import './components/autoshoutout.js';
 import './components/commands.js';
-import './components/timers.js';
+//import './components/timers.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -41,14 +39,15 @@ tmi.connect();
 // Temp Function
 tmi.on(`message`, function (channel, tags, message, self) {
   if (!self) {
-    logColorMsg(`${tags.username}: ${message}`);
+    //logColorMsg(`${tags.username}: ${message}`);
   }
 });
 
 // On successful connection...
 const onConnected = (addr, port) => {
   logColorMsg(`Connected to Twitch chat.`);
-  tmi.say(process.env.CHANNEL_NAME, `Hi there.`);
+  //tmi.say(process.env.CHANNEL_NAME, `Hi there.`);
+  connectTAU();
 }
 tmi.on(`connected`, onConnected);
 

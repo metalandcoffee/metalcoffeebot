@@ -20,7 +20,7 @@ async function commandProcessor(channel, tags, message, self) {
     for (const prop in commands) {
         if (message.startsWith(`!${prop}`)) {
             if ('so' === prop) {
-                const username = message.split(`@`)[1].trim();
+                const [, username] = message.split(`@`);
                 const userObj = await getUserInfo(username);
                 const id = userObj.data[0].id;
                 const channelInfo = await getTwitchChannelInfo(id);
