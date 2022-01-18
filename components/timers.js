@@ -2,6 +2,11 @@ import fs from 'fs';
 import { tmi } from './../vendor/tmi.js';
 
 let parsedTimers = {};
+let messageCount = 0;
+
+// Check if current message was sent my metalcoffeebot
+// If yes, zero out message count.
+// if no, increase message count by 1.
 
 function init() {
 
@@ -16,14 +21,11 @@ function init() {
 
     // Call function every minute.
     //setInterval(maybeSendTimerMessage, 600_000);
-    setInterval(maybeSendTimerMessage, 60_000);
+    setInterval(function () {
+        console.log(`hey...it's been a minute.`);
+        maybeUpdateExpDate(true);
+    }, 60_000);
 
-}
-
-function maybeSendTimerMessage() {
-    console.log(`hey...it's been a minute.`);
-    //console.log(parsedTimers);
-    maybeUpdateExpDate(true);
 }
 
 function maybeUpdateExpDate(sendTimerMsg = false) {
@@ -56,6 +58,3 @@ function maybeUpdateExpDate(sendTimerMsg = false) {
 }
 
 init();
-
-// Initialize command processor on each message sent in chat.
-//tmi.on(`message`, messageTimers);

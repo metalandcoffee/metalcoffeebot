@@ -6,13 +6,12 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { tmi } from './vendor/tmi.js';
 import { logColorMsg } from './helpers.js';
-//import { seSocket } from './vendor/se.js';
 import connectTAU from './vendor/tau.js';
 
 // Internal dependencies.
-//import './components/autoshoutout.js';
+import './components/autoshoutout.js';
 import './components/commands.js';
-//import './components/timers.js';
+import './components/timers.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
