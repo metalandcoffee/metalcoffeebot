@@ -33,7 +33,7 @@ export default function connectTAU() {
                 break;
             case "channel-raid":
                 console.log("Someone just raided my channel.");
-                raid(data.event_data.user_name, data.event_data.from_broadcaster_user_name, data.event_data.from_broadcaster_user_id);
+                raid(data.event_data.from_broadcaster_user_login, data.event_data.from_broadcaster_user_name, data.event_data.from_broadcaster_user_id);
                 break;
         }
         // the structure of data can be seen by dropping down incoming events in the dashboard.
