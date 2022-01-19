@@ -15,16 +15,37 @@
 	</head>
 	<body>
 		<h1>Metal & Coffee Bot</h1>
-		<h2>Add new command</h2>
-		<form action="" method="post" class="command-inputs">
-				<label for="name">Command Name:
-					<input type="text" name="name" id="name" placeholder="!command" required />
-				</label>
-				<label for="message">Message:
-					<textarea id="message" name="message" rows="5" placeholder="Enter command text..." required></textarea>
-				</label>
-			</div>
-			<button type="submit">Add New Command</button>
-		</form>
+		<section>
+			<h2>Add new command</h2>
+			<form action="" method="post" class="command-inputs">
+					<label for="command-name">Command Name:
+						<input type="text" name="command-name" id="command-name" placeholder="!command" required />
+					</label>
+					<label for="command-message">Message:
+						<textarea id="command-message" name="command-message" rows="5" placeholder="Enter command text..." required></textarea>
+					</label>
+				</div>
+				<div>
+					<button type="submit">Add New Command</button>
+					<button class="all-commands">See All Commands</button>
+				</div>
+			</form>
+		</section>
+		<section>
+			<h2>Add new timer</h2>
+			<form action="" method="post" class="timer-inputs">
+					<label for="timer-name">Timer Name:
+						<input type="text" name="timer-name" id="timer-name" placeholder="timer-name" required />
+					</label>
+					<label for="timer-message">Message:
+						<textarea id="timer-message" name="timer-message" rows="5" placeholder="Enter timer text..." required></textarea>
+					</label>
+				</div>
+				<div>
+					<button type="submit">Add New Timer</button>
+					<button class="all-Timers">See All Timers</button>
+				</div>
+			</form>
+		</section>
 	</body>
 </html>

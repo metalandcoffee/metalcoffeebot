@@ -33,6 +33,10 @@ label {
 	grid-template-columns: 150px 1fr;
 }
 
+section {
+	margin-bottom: 2rem;
+}
+
 input,
 textarea {
 	border-radius: 100px;
@@ -68,7 +72,7 @@ button:hover {
 	background-color: transparent;
 }
 
-.command-inputs {
+form {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;

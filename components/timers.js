@@ -7,6 +7,15 @@ let messageCount = 0;
 // Check if current message was sent my metalcoffeebot
 // If yes, zero out message count.
 // if no, increase message count by 1.
+const trackMsgCount = (channel, tags, message, self) => {
+    if (self) {
+        messageCount = 0;
+    } else {
+        messageCount++;
+    }
+}
+
+tmi.on(`message`, trackMsgCount);
 
 function init() {
 
@@ -29,22 +38,36 @@ function init() {
 }
 
 function maybeUpdateExpDate(sendTimerMsg = false) {
-    // Get current time in milliseconds.
-    const nowInMs = Number(new Date());
+    // Get current time in seconds.
+    const nowInSecs = Number(new Date());
 
     // Look through each timer property.
     for (let prop in parsedTimers) {
         // Check to see if expiration date is in the past.
-        const expDateInMs = parsedTimers[prop].expirationDate;
+        const expDateInSecs = parsedTimers[prop].expirationDate;
+
+        // Temp code.
+        const tmpDate = new Date(expDateInSecs).toLocaleDateString("en-US");
+        var tmpTime = new Date(expDateInSecs).toLocaleTimeString("en-US");
+        console.log(tmpDate, tmpTime);
+        // End temp code.
 
         // If expiration date is in the past, send to chat and update.
-        if (nowInMs > expDateInMs) {
-            console.log(`${prop} is expired.`);
-            const nextTimestamp = nowInMs + (parsedTimers[prop].timeIntervalInMinutes * 60_000);
-            parsedTimers[prop].expirationDate = nextTimestamp;
-
+        if (nowInSecs > expDateInSecs) {
             // Say message in chat.
-            if (sendTimerMsg) tmi.say(process.env.CHANNEL_NAME, parsedTimers[prop].message);
+            console.log(`messageCount ${messageCount}`);
+            if (sendTimerMsg) {
+                if (messageCount >= parseInt(parsedTimers[prop].chatLines)) {
+                    console.log(`${prop} is expired.`);
+                    const nextTimestamp = nowInSecs + (parsedTimers[prop].timeIntervalInMinutes * 60_000);
+                    parsedTimers[prop].expirationDate = nextTimestamp;
+                    tmi.say(process.env.CHANNEL_NAME, parsedTimers[prop].message);
+                }
+            } else {
+                console.log(`${prop} is expired.`);
+                const nextTimestamp = nowInSecs + (parsedTimers[prop].timeIntervalInMinutes * 60_000);
+                parsedTimers[prop].expirationDate = nextTimestamp;
+            }
         }
     }
 
