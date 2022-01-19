@@ -5,7 +5,17 @@ html {
 body {
 	font-family: "Lato", sans-serif;
 	color: white;
-	background-color: black;
+	background: rgb(52, 39, 98);
+	background: linear-gradient(
+			211deg,
+			rgba(52, 39, 98, 1) 0%,
+			rgba(96, 44, 96, 1) 75%,
+			rgba(48, 33, 50, 1) 100%
+		)
+		no-repeat;
+	height: 100vh;
+	margin: 0;
+	padding: 10rem 27rem;
 }
 
 h1,
@@ -14,5 +24,52 @@ h3,
 h4,
 h5,
 h6 {
+	font-weight: 700;
 	margin-top: 0;
+}
+
+label {
+	display: grid;
+	grid-template-columns: 150px 1fr;
+}
+
+input,
+textarea {
+	border-radius: 100px;
+	border: none;
+	padding: 0.75rem 1rem;
+	resize: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+	font-family: "Lato", sans-serif;
+	font-size: 1rem;
+}
+
+textarea {
+	border-radius: 15px;
+}
+
+button {
+	font-family: "Lato", sans-serif;
+	color: currentColor;
+	border-radius: 30px;
+	font-size: 1rem;
+	background-color: #7f427e;
+	padding: 0.75rem 1rem;
+	border: 1px solid #7f427e;
+	cursor: pointer;
+	align-self: center;
+	transition: all 0.3s;
+}
+
+button:hover {
+	background-color: transparent;
+}
+
+.command-inputs {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }

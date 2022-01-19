@@ -8,7 +8,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Lato:wght@300,700&display=swap"
 			rel="stylesheet"
 		/>
 		<title>Metal & Coffee</title>
@@ -16,29 +16,15 @@
 	<body>
 		<h1>Metal & Coffee Bot</h1>
 		<h2>Add new command</h2>
-		<button>Commands</button>
-		<button>See All Commands</button>
-		<button>Add New Command</button>
-		<button>Change Command</button>
-		<button>Delete Command</button>
-		<form action="" method="get" class="form-example">
-			<div class="form-example">
-				<label for="name">Command Name: </label>
-				<input type="text" name="name" id="name" required />
+		<form action="" method="post" class="command-inputs">
+				<label for="name">Command Name:
+					<input type="text" name="name" id="name" placeholder="!command" required />
+				</label>
+				<label for="message">Message:
+					<textarea id="message" name="message" rows="5" placeholder="Enter command text..." required></textarea>
+				</label>
 			</div>
-			<div class="form-example">
-				<label for="message">Message: </label>
-				<textarea
-					id="message"
-					name="message"
-					rows="5"
-					cols="33"
-					required
-				></textarea>
-			</div>
-			<div class="form-example">
-				<input type="submit" value="Add" />
-			</div>
+			<button type="submit">Add New Command</button>
 		</form>
 	</body>
 </html>
