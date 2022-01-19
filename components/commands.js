@@ -6,7 +6,7 @@ import { tmi } from './../vendor/tmi.js';
 import { getTwitchChannelInfo, getUserInfo } from '../vendor/twitchAPI.js';
 
 const require = createRequire(import.meta.url);
-const commands = require('./commands.json');
+const commands = require('./tmp/commands.json');
 
 // Listen for commands.
 async function commandProcessor(channel, tags, message, self) {
