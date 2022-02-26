@@ -1,14 +1,15 @@
 // External dependencies.
+import path from 'path';
+import { fileURLToPath } from 'url';
 import fs from 'fs';
 import { config } from 'dotenv';
 import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import { tmi } from './vendor/tmi.js';
 import { logColorMsg } from './helpers.js';
 import connectTAU from './vendor/tau.js';
 
 // Internal dependencies.
+import { home, addCommand } from './express.js'
 //import './components/autoshoutout.js';
 import './components/commands.js';
 import './components/timers.js';
@@ -19,15 +20,13 @@ const __dirname = path.dirname(__filename);
 // Express functions.
 const app = express();
 const port = 3001;
-app.get('/', (req, res) => {
-  res.sendFile(`${__dirname}/views/index.html`);
-});
-// Express: Serve images, CSS files, and JavaScript files in a directory named public.
-app.use(express.static(__dirname + '/public'));
-
 app.listen(port, () => {
   logColorMsg(`Example app listening at http://localhost:${port}`);
 })
+// Express: Serve images, CSS files, and JavaScript files in a directory named public.
+app.use(express.static(__dirname + '/public'));
+app.get('/', home);
+app.post('add-command', addCommand);
 
 // Load environment variables.
 config();
@@ -38,7 +37,7 @@ tmi.connect();
 // Temp Function
 tmi.on(`message`, function (channel, tags, message, self) {
   if (!self) {
-    //logColorMsg(`${tags.username}: ${message}`);
+    logColorMsg(`${tags.username}: ${message}`);
   }
 });
 
@@ -62,7 +61,6 @@ try {
   console.error(err);
 }
 
-
 tmi.on(`join`, (channel, username, self) => {
 
   // If not in viewers array, add and write to file.
@@ -71,7 +69,4 @@ tmi.on(`join`, (channel, username, self) => {
     fs.appendFileSync(`logs/log-${todayStr}.txt`, `${username}\n`);
   }
 });
-// seSocket.on('event', (data) => {
-//   // Data collecting for future enhancements.
-//   fs.appendFileSync(`logs/streamElementslog.txt`, JSON.stringify(data));
-// });
+

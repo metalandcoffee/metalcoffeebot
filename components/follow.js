@@ -7,5 +7,5 @@ config();
 
 export default function followNotif(username) {
    logColorMsg(`New follower ${username}`);
-   tmi.say(process.env.CHANNEL_NAME, `Welcome to the MC Lounge, @${username} metala19Cheers Coffee is in the back.`);
+   tmi.say(process.env.CHANNEL_NAME, `Welcome to the MC Lounge, @${username} metala19Headbang Coffee is in the back.`);
 }

@@ -1,6 +1,7 @@
 // External dependencies.
 import { createRequire } from "module";
 import { tmi } from './../vendor/tmi.js';
+import _ from 'lodash';
 
 // Internal dependencies.
 import { getTwitchChannelInfo, getUserInfo } from '../vendor/twitchAPI.js';
@@ -11,6 +12,7 @@ const commands = require('./tmp/commands.json');
 // Listen for commands.
 async function commandProcessor(channel, tags, message, self) {
 
+    
     // Ignore messages from the bot.
     if (self) {
         return;
@@ -21,16 +23,19 @@ async function commandProcessor(channel, tags, message, self) {
         if (message.startsWith(`!${prop}`)) {
             if ('so' === prop) {
                 const [, username] = message.split(`@`);
+                console.log(username);
+                if (undefined === username) return
                 const userObj = await getUserInfo(username);
+                console.log(userObj)
                 const id = userObj.data[0].id;
                 const channelInfo = await getTwitchChannelInfo(id);
                 const title = channelInfo.data[0].title;
-                commands[prop] = commands[prop].replace(`{username}`, username);
-                commands[prop] = commands[prop].replace(`{stream-title}`, title);
-                commands[prop] = commands[prop].replace(`{url}`, `https://twitch.tv/${username}`);
-                //const found = commands[prop].match(/{([^ ]*)}/gi);
-                //console.log(found);
-                tmi.say(channel, commands[prop]);
+
+                let cmdMsg = commands[prop];
+                cmdMsg = cmdMsg.replace(`{username}`, username);
+                cmdMsg = cmdMsg.replace(`{stream-title}`, title);
+                cmdMsg = cmdMsg.replace(`{url}`, `https://twitch.tv/${username}`);
+                tmi.say(channel, cmdMsg);
             } else {
                 console.log(`Sending command "${prop}: ${commands[prop]}"`);
                 tmi.say(channel, commands[prop]);

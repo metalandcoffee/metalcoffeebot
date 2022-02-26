@@ -1,4 +1,7 @@
 # Metalcoffeebot
+
+- Add !watch command
+- Add raid commands
 ## Chatbot for twitch.tv/metalandcoffee_
 
 This is a very basic Node.js application that can be used as a starting point to make your own chatbot for Twitch! ✨
@@ -8,7 +11,7 @@ This application uses [tmi.js](https://tmijs.com/) to interact with Twitch Chat 
 ### **Getting started**
 After cloning the repository, run `npm install` in the root directory to install all the needed packages defined in `package.json`.
 
-Create an `.env` file to store your secrets. The following environmental variables should be defined in the file:
+Create an `.env` file to store your  tertersecrets. The following environmental variables should be defined in the file:
 
 | Variable      | Description |
 | ----------- | ----------- |
