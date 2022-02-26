@@ -12,7 +12,7 @@ const commands = require('./tmp/commands.json');
 // Listen for commands.
 async function commandProcessor(channel, tags, message, self) {
 
-    
+
     // Ignore messages from the bot.
     if (self) {
         return;
@@ -22,11 +22,12 @@ async function commandProcessor(channel, tags, message, self) {
     for (const prop in commands) {
         if (message.startsWith(`!${prop}`)) {
             if ('so' === prop) {
+                if (false === tags.mod && (!tags.badges || !tags.badges.broadcaster)) {
+                    return;
+                }
                 const [, username] = message.split(`@`);
-                console.log(username);
                 if (undefined === username) return
                 const userObj = await getUserInfo(username);
-                console.log(userObj)
                 const id = userObj.data[0].id;
                 const channelInfo = await getTwitchChannelInfo(id);
                 const title = channelInfo.data[0].title;
@@ -36,6 +37,7 @@ async function commandProcessor(channel, tags, message, self) {
                 cmdMsg = cmdMsg.replace(`{stream-title}`, title);
                 cmdMsg = cmdMsg.replace(`{url}`, `https://twitch.tv/${username}`);
                 tmi.say(channel, cmdMsg);
+
             } else {
                 console.log(`Sending command "${prop}: ${commands[prop]}"`);
                 tmi.say(channel, commands[prop]);
