@@ -6,6 +6,7 @@
 import WebSocket from 'ws';
 import follow from '../components/follow.js';
 import raid from '../components/raid.js';
+import { subGiftNotif, subNotif } from '../components/subs.js';
 
 export default function connectTAU() {
     const webSocketUrl = 'ws://localhost:8000/ws/twitch-events/'; // This address is your local TAU instance address.  By default it is localhost:8000.  NOTE: the protocol must be ws:// NOT http://
@@ -22,18 +23,22 @@ export default function connectTAU() {
     // onmessage event - update the view of the data, and raw json data.
     webSocket.onmessage = (e) => {
         const data = JSON.parse(e.data);
-
-        console.log(data);
         // Here is where we do stuff with the data that comes back.  I'd recommend a switch or if-else if-else if.. etc.. to pass the data to different functions.
         // e.g.:
         switch (data.event_type) {
-            case "channel-follow":
-                console.log("Someone followed my channel!");
+            case 'channel-follow':
+                console.log('Someone followed my channel!');
                 follow(data.event_data.user_name);
                 break;
-            case "channel-raid":
-                console.log("Someone just raided my channel.");
+            case 'channel-raid':
+                console.log('Someone just raided my channel.');
                 raid(data.event_data.from_broadcaster_user_login, data.event_data.from_broadcaster_user_name, data.event_data.from_broadcaster_user_id);
+                break;
+            case 'channel-subscribe':
+                subNotif(data.event_data.user_name, data.event_data.is_gift);
+                break;
+            case 'channel-subscription-gift':
+                subGiftNotif(data.event_data.user_name, data.event_data.total);
                 break;
         }
         // the structure of data can be seen by dropping down incoming events in the dashboard.
