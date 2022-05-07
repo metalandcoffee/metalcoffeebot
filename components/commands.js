@@ -22,9 +22,11 @@ async function commandProcessor(channel, tags, message, self) {
     return;
   }
 
+  const cmd = message.split(' ')[0];
+
   // Check if messages contains any of the commands in json.
   for (const prop in commands) {
-    if (message.startsWith(`!${prop}`)) {
+    if (cmd === `!${prop}`) {
       if ('so' === prop) {
         if (false === tags.mod && (!tags.badges || !tags.badges.broadcaster)) {
           return;
@@ -34,7 +36,6 @@ async function commandProcessor(channel, tags, message, self) {
           return;
         }
         const userObj = await getUserInfo(username);
-        console.log(userObj);
         if ( userObj.data.length < 0) {
           return;
         }
@@ -48,7 +49,6 @@ async function commandProcessor(channel, tags, message, self) {
         cmdMsg = cmdMsg.replace(`{url}`, `https://twitch.tv/${username}`);
         tmi.say(channel, cmdMsg);
       } else {
-        console.log(`Sending command "${prop}: ${commands[prop]}"`);
         tmi.say(channel, commands[prop]);
       }
     }
