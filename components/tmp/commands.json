@@ -7,9 +7,10 @@
 	"discord": "Want to stay in touch and hang out with me and other metalheads? Join my lounge! https://discord.gg/BY8tB8ZdSw",
 	"youtube": "Checkout my YouTube channel! https://www.youtube.com/c/metalandcoffee87",
 	"mosh": " metala19Headbang metala19Headbang metala19Headbang metala19Headbang metala19Headbang metala19Headbang metala19Headbang metala19Headbang metala19Headbang metala19Headbang metala19Headbang metala19Headbang metala19Headbang metala19Headbang",
-	"newjob": "Metal & Coffee is starting a new position as a Senior Software Engineer at PMC soon! PMC is a digital media company that houses Billboard, Rolling Stone, Variety and many more.",
-	"retweet": "Want to help elevate the stream? Feel free to give this a retweet!! https://twitter.com/metalandcoffee_/status/1510052695704489989",
+	"job": "Metal & Coffee is a Senior Software Engineer at Penske Media Corporation (PMC)! PMC is a digital media company that houses Billboard, Rolling Stone, Variety and many more.",
+	"tutorial": "Metal & Coffee is following this tutorial to create a business card CLI tool: https://whitep4nth3r.com/blog/build-a-business-card-cli-tool/",
 	"github": "Check out my Github profile: https://github.com/metalandcoffee",
-	"project": "Working on refactoring current app to Next.js by following this tutorial: https://www.mongodb.com/developer/how-to/nextjs-with-mongodb/",
-	"socials": "Check out M&C's socials here! https://themetalhead.dev/"
+	"socials": "Check out M&C's socials here! https://themetalhead.dev/",
+	"raidathon": "Welcome to the The Claw raidation! Check out the schedule here: https://theclaw.team/raidathon",
+	"theclaw": "Build stuff, learn things, love what you do. Lead by whitep4nth3r, The Claw is both a community and a stream team of diverse tech streamers from across the world streaming all aspects of science, tech, software and game development — with a focus on being friendly and welcoming to all."
 }
