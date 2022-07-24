@@ -16,7 +16,10 @@ const raidWelcome = async (username, displayName, broadcasterID) => {
   logColorMsg(`New raid... ${displayName}`);
 
   setTimeout(function() {
-    tmi.say(process.env.CHANNEL_NAME, `Thanks so much for raiding, @${displayName} ✨ metala19Hype metala19Hype metala19Hype metala19Hype metala19Hype Welcome to the MC Lounge, raiders! Coffee is in the back. 💀 ☕️`);
+    tmi.say(process.env.CHANNEL_NAME, `Thanks so much for raiding,
+    @${displayName} ✨ metala19Hype metala19Hype metala19Hype
+    metala19Hype metala19Hype Welcome to the MC Lounge, raiders!
+    Coffee is in the back. 💀 ☕️`);
   }, 20000);
 
   setTimeout(function() {

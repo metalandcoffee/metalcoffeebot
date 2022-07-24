@@ -1,1 +1,38 @@
-{"follow":{"message":"If you're having a good time, don't forget to hit that follow button 🤗✨","timeIntervalInMinutes":29,"chatLines":5,"expirationDate":1654823679584},"mixtapes":{"message":"Yes, Metal & Coffee is an actual metalhead. Check out my new latest mixtapes here: https://www.mixcloud.com/metalandcoffee/  📼","timeIntervalInMinutes":25,"chatLines":5,"expirationDate":1654823919598},"links":{"message":"Looking to find me outside of Twitch? 🧐 https://themetalhead.dev","timeIntervalInMinutes":20,"chatLines":5,"expirationDate":1654823799601},"donate":{"message":"If you are enjoying the content and want to do more to support, feel free to donate! Either way, thank you for being here ✨ https://StreamElements.com/metalandcoffee_/tip","timeIntervalInMinutes":45,"chatLines":5,"expirationDate":1654824339573}}
+{
+	"follow": {
+		"message": "If you're having a good time, don't forget to hit that follow button 🤗✨",
+		"timeIntervalInMinutes": 29,
+		"chatLines": 5,
+		"expirationDate": 1658434184667
+	},
+	"cowork": {
+		"message": "Metal & Coffee is working and using the pomodoro technique. During focused work periods, mic will be off. Enjoy the metal music 🤘🏾",
+		"timeIntervalInMinutes": 15,
+		"chatLines": 5,
+		"expirationDate": "off"
+	},
+	"mixtapes": {
+		"message": "Yes, Metal & Coffee is an actual metalhead. Check out my new latest mixtapes here: https://www.mixcloud.com/metalandcoffee/  📼",
+		"timeIntervalInMinutes": 25,
+		"chatLines": 5,
+		"expirationDate": 1658434184674
+	},
+	"socials": {
+		"message": "Looking to find me outside of Twitch? 🧐 https://themetalhead.dev",
+		"timeIntervalInMinutes": 20,
+		"chatLines": 5,
+		"expirationDate": 1658433944676
+	},
+	"instagram": {
+		"message": "I'm super hype about my vinyl collection and love sharing it! Follow me on instagram to stay up-to-date 💿 https://instagram.com/metalandcoffee",
+		"timeIntervalInMinutes": 20,
+		"chatLines": 5,
+		"expirationDate": 1658434064678
+	},
+	"donate": {
+		"message": "If you are enjoying the content and want to do more to support, feel free to donate! Either way, thank you for being here ✨ https://StreamElements.com/metalandcoffee_/tip",
+		"timeIntervalInMinutes": 45,
+		"chatLines": 5,
+		"expirationDate": 1658432864605
+	}
+}
