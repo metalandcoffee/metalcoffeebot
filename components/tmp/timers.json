@@ -1,9 +1,9 @@
 {
 	"follow": {
 		"message": "If you're having a good time, don't forget to hit that follow button 🤗✨",
-		"timeIntervalInMinutes": 29,
+		"timeIntervalInMinutes": 30,
 		"chatLines": 5,
-		"expirationDate": 1658878520973
+		"expirationDate": 1659142693698
 	},
 	"cowork": {
 		"message": "Metal & Coffee is working and using the pomodoro technique. During focused work periods, mic will be off. Enjoy the metal music 🤘🏾",
@@ -19,32 +19,32 @@
 	},
 	"socials": {
 		"message": "Looking to find me outside of Twitch? 🧐 https://themetalhead.dev",
-		"timeIntervalInMinutes": 20,
+		"timeIntervalInMinutes": 45,
 		"chatLines": 5,
-		"expirationDate": 1658878880984
+		"expirationDate": 1659143113729
 	},
 	"instagram": {
 		"message": "I'm super hype about my vinyl collection and love sharing it! Follow me on instagram to stay up-to-date 💿 https://instagram.com/metalandcoffee",
 		"timeIntervalInMinutes": 20,
 		"chatLines": 5,
-		"expirationDate": 1658878220979
+		"expirationDate": 1659142453705
 	},
 	"donate": {
 		"message": "If you are enjoying the content and want to do more to support, feel free to donate! Either way, thank you for being here ✨ https://StreamElements.com/metalandcoffee_/tip",
 		"timeIntervalInMinutes": 45,
 		"chatLines": 5,
-		"expirationDate": 1658879840979
+		"expirationDate": 1659144793736
 	},
 	"afterparty": {
 		"message": "I'm having a Deadmen And Dragons #AfterParty here this fall! Tune in for my DJ set on Friday October 21st at 10:30pm EST. Type !tour to find out more.",
-		"timeIntervalInMinutes": 15,
+		"timeIntervalInMinutes": 25,
 		"chatLines": 10,
-		"expirationDate": 1658879840979
+		"expirationDate": 1659142573722
 	},
 	"breaktech": {
 		"message": "Wondering how I got started in tech? Check out my Youtube video. https://youtu.be/1KcglsWpyko",
-		"timeIntervalInMinutes": 30,
+		"timeIntervalInMinutes": 35,
 		"chatLines": 5,
-		"expirationDate": 1658879840979
+		"expirationDate": 1659143953737
 	}
 }
