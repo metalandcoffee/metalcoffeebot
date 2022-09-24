@@ -10,7 +10,7 @@ import connectTAU from './vendor/tau.js';
 
 // Internal dependencies.
 import {home, addCommand} from './express.js';
-import './components/autoshoutout.js';
+// import './components/autoshoutout.js';
 import './components/commands.js';
 import './components/timers.js';
 
@@ -23,7 +23,8 @@ const port = 3001;
 app.listen(port, () => {
   logColorMsg(`Example app listening at http://localhost:${port}`);
 });
-// Express: Serve images, CSS files, and JavaScript files in a directory named public.
+// Express: Serve images, CSS files, and JavaScript files
+// in a directory named public.
 app.use(express.static(__dirname + '/public'));
 app.get('/', home);
 app.post('add-command', addCommand);
@@ -44,7 +45,7 @@ tmi.on(`message`, function(channel, tags, message, self) {
 // On successful connection...
 const onConnected = (addr, port) => {
   logColorMsg(`Connected to Twitch chat.`);
-  tmi.say(process.env.CHANNEL_NAME, `Hi there.`);
+  // tmi.say(process.env.CHANNEL_NAME, `Hi there.`);
   connectTAU();
 };
 tmi.on(`connected`, onConnected);
