@@ -1,7 +1,8 @@
 # Metalcoffeebot
 
-- Add !watch command
-- Add raid commands
+## Todos
+- Refactor timers.js and save expiration dates in separate file.
+- Implement command timeout feature (keep command from being used more than once every X minutes)
 ## Chatbot for twitch.tv/metalandcoffee_
 
 This is a very basic Node.js application that can be used as a starting point to make your own chatbot for Twitch! ✨
