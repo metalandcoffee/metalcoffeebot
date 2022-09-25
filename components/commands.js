@@ -7,7 +7,7 @@ import {tmi} from './../vendor/tmi.js';
 import {getTwitchChannelInfo, getUserInfo} from '../vendor/twitchAPI.js';
 
 const require = createRequire(import.meta.url);
-const commands = require('./tmp/commands.json');
+const commands = require('./db/commands.json');
 
 /**
  * Listen for commands in chat.
@@ -27,9 +27,10 @@ async function commandProcessor(channel, tags, message, self) {
 
   const isShoutOut = await shoutOutCmd(cmd, tags, message, channel);
   const isCurrentSong = await songCmd(cmd, tags, message, channel);
+  const isRecentPlays = await recentPlaysCmd(cmd, tags, message, channel);
 
   // Check its command is the shoutout.
-  if (isShoutOut) {
+  if (isShoutOut || isCurrentSong || isRecentPlays) {
     return;
   }
 
@@ -81,6 +82,20 @@ const songCmd = async (cmd, tags, message, channel) => {
   const jsonObj = await response.json();
   tmi.say(channel, `The current song is ${jsonObj.trackName} by
     ${jsonObj.artists}: ${jsonObj.songPreviewURL}`);
+};
+
+const recentPlaysCmd = async (cmd, tags, message, channel) => {
+  if ('!recent' !== cmd) {
+    return false;
+  }
+
+  const response = await fetch('https://metal-plays-spotify-proxy.herokuapp.com/played');
+  const jsonObj = await response.json();
+  const recentTracks = [];
+  for (let i = 0; i < 5; i++) {
+    recentTracks.push(`${jsonObj[i].artists.join(', ')} - ${jsonObj[i].trackName}`);
+  }
+  tmi.say(channel, recentTracks.join(', '));
 };
 
 // Initialize command processor on each message sent in chat.

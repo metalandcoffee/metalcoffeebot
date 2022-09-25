@@ -22,7 +22,7 @@ tmi.on(`message`, trackMsgCount);
  */
 function init() {
   // Read in timers database.
-  const timers = fs.readFileSync('./components/tmp/timers.json', 'utf-8');
+  const timers = fs.readFileSync('./components/db/timers.json', 'utf-8');
 
   // Convert it from string to object.
   parsedTimers = JSON.parse(timers);
