@@ -47,10 +47,10 @@
 		"chatLines": 5,
 		"expirationDate": 1664129015261
 	},
-	"giveaway": {
-		"message": "Friday September 23rd @ 6pm EST I am doing a giveaway for the Deadmen and Dragons Tour. Mark your calendar! Type !tour to view tour dates. ",
-		"timeIntervalInMinutes": 45,
-		"chatLines": 5,
-		"expirationDate": 1664129493475
+	"vote": {
+		"message": "I was nominated for a Jammie Award! Make sure to vote for me and maybe I'll see you at Jamstack Conf! https://jamstack.org/conf/jammies/",
+		"timeIntervalInMinutes": 15,
+		"chatLines": 2,
+		"expirationDate": 0
 	}
 }
