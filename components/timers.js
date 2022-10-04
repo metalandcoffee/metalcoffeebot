@@ -74,8 +74,6 @@ function maybeUpdateExpDate(sendTimerMsg = false) {
   // Turn object into string before updating file.
   const stringifiedTimers = JSON.stringify(parsedTimers);
   fs.writeFile('./components/db/timers.json', stringifiedTimers, (err) => {
-    console.log(parsedTimers);
-    console.log('writing to timers.json');
     if (err) return console.log(err);
   });
 }
