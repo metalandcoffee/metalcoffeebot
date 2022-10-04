@@ -37,19 +37,19 @@ function init() {
   }, 60_000);
 }
 
+/**
+ * Maybe update the expiration date in timers.json
+ *
+ * @param {*} sendTimerMsg Whether or not to send timed message.
+ */
 function maybeUpdateExpDate(sendTimerMsg = false) {
   // Get current time in seconds.
   const nowInSecs = Number(new Date());
 
-  // Look through each timer property.
+  // eslint-disable-next-line -- Intentional looping of all props.
   for (const prop in parsedTimers) {
     // Check to see if expiration date is in the past.
     const expDateInSecs = parsedTimers[prop].expirationDate;
-
-    // Temp code.
-    const tmpDate = new Date(expDateInSecs).toLocaleDateString('en-US');
-    const tmpTime = new Date(expDateInSecs).toLocaleTimeString('en-US');
-    // End temp code.
 
     // If expiration date is in the past, send to chat and update.
     if ('off' !== expDateInSecs && nowInSecs > expDateInSecs) {
@@ -58,13 +58,14 @@ function maybeUpdateExpDate(sendTimerMsg = false) {
       if (sendTimerMsg) {
         if (messageCount >= parseInt(parsedTimers[prop].chatLines)) {
           console.log(`${prop} is expired.`);
-          const nextTimestamp = nowInSecs + (parsedTimers[prop].timeIntervalInMinutes * 60_000);
+          const nextTimestamp = nowInSecs +
+            (parsedTimers[prop].timeIntervalInMinutes * 60_000);
           parsedTimers[prop].expirationDate = nextTimestamp;
           tmi.say(process.env.CHANNEL_NAME, parsedTimers[prop].message);
         }
       } else {
-        console.log(`${prop} is expired.`);
-        const nextTimestamp = nowInSecs + (parsedTimers[prop].timeIntervalInMinutes * 60_000);
+        const nextTimestamp = nowInSecs +
+          (parsedTimers[prop].timeIntervalInMinutes * 60_000);
         parsedTimers[prop].expirationDate = nextTimestamp;
       }
     }
@@ -73,8 +74,8 @@ function maybeUpdateExpDate(sendTimerMsg = false) {
   // Turn object into string before updating file.
   const stringifiedTimers = JSON.stringify(parsedTimers);
   fs.writeFile('./components/db/timers.json', stringifiedTimers, (err) => {
-    // console.log(parsedTimers);
-    // console.log('writing to timers.json');
+    console.log(parsedTimers);
+    console.log('writing to timers.json');
     if (err) return console.log(err);
   });
 }
