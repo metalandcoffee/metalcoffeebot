@@ -4,7 +4,9 @@
 
 This is a very basic Node.js application that can be used as a starting point to make your own chatbot for Twitch! ✨
 
-This application uses [tmi.js](https://tmijs.com/) to interact with Twitch Chat & connects to the Twitch API and StreamElements API.
+This application uses [tmi.js](https://tmijs.com/) to interact with Twitch Chat & connects to the Twitch API.
+
+It also uses TAU. (More info coming soon)
 
 ### **Getting started**
 After cloning the repository, run `npm install` in the root directory to install all the needed packages defined in `package.json`.

@@ -52,7 +52,7 @@ export const getTwitchChannelInfo = async (broadcaster_id) => {
 };
 
 /**
- * Get uesr info by username. If none found { data: [] }.
+ * Get user info by username. If none found { data: [] }.
  *
  * @param {string} username Twitch username
  * @return object/string
@@ -79,19 +79,3 @@ export const getUserInfo = async (username) => {
 };
 
 
-// {
-//     data: [
-//       {
-//         id: '163734028',
-//         login: 'metalandcoffee_',
-//         display_name: 'MetalAndCoffee_',
-//         type: '',
-//         broadcaster_type: 'affiliate',
-//         description: "💀☕️ Hey! I'm Metal & Coffee (she/her). I'm a ful-time web developer. I'm a metalhead ᕙ(⇀‸↼‶)ᕗ I stream coding and horror games. ☕️💀🤘🏾",
-//         profile_image_url: 'https://static-cdn.jtvnw.net/jtv_user_pictures/77260c3b-0087-4297-b2f1-83d92567d552-profile_image-300x300.png',
-//         offline_image_url: 'https://static-cdn.jtvnw.net/jtv_user_pictures/f30cdb32-c095-4453-ab3a-770d7a3aa16d-channel_offline_image-1920x1080.png',
-//         view_count: 13620,
-//         created_at: '2017-07-09T17:28:23Z'
-//       }
-//     ]
-//   }
