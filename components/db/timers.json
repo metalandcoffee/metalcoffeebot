@@ -1,1 +1,56 @@
-{"follow":{"message":"If you're having a good time, don't forget to hit that follow button 🤗✨","timeIntervalInMinutes":30,"chatLines":5,"expirationDate":1669262000794},"cowork":{"message":"Metal & Coffee is working and using the pomodoro technique. During focused work periods, mic will be off. Enjoy the metal music 🤘🏾","timeIntervalInMinutes":5,"chatLines":1,"expirationDate":"off"},"mixtapes":{"message":"Yes, Metal & Coffee is an actual metalhead. Check out my new latest mixtapes here: https://www.mixcloud.com/metalandcoffee/  📼","timeIntervalInMinutes":25,"chatLines":5,"expirationDate":1669260260788},"socials":{"message":"Looking to find me outside of Twitch? 🧐 https://themetalhead.dev","timeIntervalInMinutes":30,"chatLines":5,"expirationDate":1669260080778},"instagram":{"message":"I'm super hype about my vinyl collection and love sharing it! Follow me on instagram to stay up-to-date 💿 https://instagram.com/metalandcoffee","timeIntervalInMinutes":45,"chatLines":5,"expirationDate":1669262360785},"donate":{"message":"If you are enjoying the content and want to do more to support, feel free to donate! Either way, thank you for being here ✨ https://StreamElements.com/metalandcoffee_/tip","timeIntervalInMinutes":60,"chatLines":5,"expirationDate":1669261460768},"breaktech":{"message":"Wondering how I got started in tech? Check out my Youtube video. https://youtu.be/1KcglsWpyko","timeIntervalInMinutes":30,"chatLines":5,"expirationDate":1669260200782},"rewards":{"message":"Use your channel points! New redemptions including song requests, getting me to show you a random vinyl and forcing me to do a weakass metal scream.","timeIntervalInMinutes":15,"chatLines":2,"expirationDate":"off"}}
+{
+	"follow": {
+		"message": "If you're having a good time, don't forget to hit that follow button 🤗✨",
+		"timeIntervalInMinutes": 30,
+		"chatLines": 5,
+		"expirationDate": 1669262000794
+	},
+	"cowork": {
+		"message": "Metal & Coffee is working and using the pomodoro technique. During focused work periods, mic will be off. Enjoy the metal music 🤘🏾",
+		"timeIntervalInMinutes": 5,
+		"chatLines": 1,
+		"expirationDate": "off"
+	},
+	"mixtapes": {
+		"message": "Yes, Metal & Coffee is an actual metalhead. Check out my new latest mixtapes here: https://www.mixcloud.com/metalandcoffee/  📼",
+		"timeIntervalInMinutes": 25,
+		"chatLines": 5,
+		"expirationDate": 1669260260788
+	},
+	"socials": {
+		"message": "Looking to find me outside of Twitch? 🧐 https://themetalhead.dev",
+		"timeIntervalInMinutes": 30,
+		"chatLines": 5,
+		"expirationDate": 1669260080778
+	},
+	"instagram": {
+		"message": "I'm super hype about my vinyl collection and love sharing it! Follow me on instagram to stay up-to-date 💿 https://instagram.com/metalandcoffee",
+		"timeIntervalInMinutes": 45,
+		"chatLines": 5,
+		"expirationDate": 1669262360785
+	},
+	"donate": {
+		"message": "If you are enjoying the content and want to do more to support, feel free to donate! Either way, thank you for being here ✨ https://StreamElements.com/metalandcoffee_/tip",
+		"timeIntervalInMinutes": 60,
+		"chatLines": 5,
+		"expirationDate": 1669261460768
+	},
+	"breaktech": {
+		"message": "Wondering how I got started in tech? Check out my Youtube video. https://youtu.be/1KcglsWpyko",
+		"timeIntervalInMinutes": 30,
+		"chatLines": 5,
+		"expirationDate": 1669260200782
+	},
+	"rewards": {
+		"message": "Use your channel points! New redemptions including song requests, getting me to show you a random vinyl and forcing me to do a weakass metal scream.",
+		"timeIntervalInMinutes": 15,
+		"chatLines": 2,
+		"expirationDate": "off"
+	},
+	"metalrecap": {
+		"message": "Check out my latest metal monthly recap video: https://www.instagram.com/reel/CqlQRhsJwdi/",
+		"timeIntervalInMinutes": 15,
+		"chatLines": 2,
+		"expirationDate": 0
+	}
+}
