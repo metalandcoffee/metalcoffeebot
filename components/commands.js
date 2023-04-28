@@ -80,7 +80,6 @@ const songCmd = async (cmd, tags, message, channel) => {
 
   const response = await fetch('https://metal-plays-spotify-proxy.herokuapp.com/current');
   const jsonObj = await response.json();
-  console.log(jsonObj);
   if ('{}' === JSON.stringify(jsonObj)) {
     tmi.say(channel, 'Nothing is playing... Are you in private session mode?');
   } else {
