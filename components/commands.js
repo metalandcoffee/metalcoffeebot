@@ -58,7 +58,7 @@ const shoutOutCmd = async (cmd, tags, message, channel) => {
     return false;
   }
   const userObj = await getUserInfo(username);
-  if ( userObj.data.length < 0) {
+  if (userObj.data.length < 0) {
     return false;
   }
   const id = userObj.data[0].id;
@@ -80,8 +80,13 @@ const songCmd = async (cmd, tags, message, channel) => {
 
   const response = await fetch('https://metal-plays-spotify-proxy.herokuapp.com/current');
   const jsonObj = await response.json();
-  tmi.say(channel, `The current song is ${jsonObj.trackName} by
+  console.log(jsonObj);
+  if ('{}' === JSON.stringify(jsonObj)) {
+    tmi.say(channel, 'Nothing is playing... Are you in private session mode?');
+  } else {
+    tmi.say(channel, `The current song is ${jsonObj.trackName} by
     ${jsonObj.artists}: ${jsonObj.songPreviewURL}`);
+  }
 };
 
 const recentPlaysCmd = async (cmd, tags, message, channel) => {
@@ -93,7 +98,9 @@ const recentPlaysCmd = async (cmd, tags, message, channel) => {
   const jsonObj = await response.json();
   const recentTracks = [];
   for (let i = 0; i < 5; i++) {
-    recentTracks.push(`${jsonObj[i].artists.join(', ')} - ${jsonObj[i].trackName}`);
+    recentTracks.push(
+        `${jsonObj[i].artists.join(', ')} - ${jsonObj[i].trackName}`,
+    );
   }
   tmi.say(channel, recentTracks.join(', '));
 };
