@@ -4,13 +4,13 @@ import {fileURLToPath} from 'url';
 import fs from 'fs';
 import {config} from 'dotenv';
 import express from 'express';
-import {tmi} from './vendor/tmi.js';
 import {logColorMsg} from './helpers.js';
+import {tmi} from './vendor/tmi.js';
 import connectTAU from './vendor/tau.js';
 
 // Internal dependencies.
+
 import {home, addCommand} from './express.js';
-import './components/autoshoutout.js';
 import './components/commands.js';
 import './components/timers.js';
 
@@ -57,16 +57,15 @@ let viewers = [];
 try {
   viewers = fs.readFileSync(`logs/log-${todayStr}.txt`, `utf8`);
   viewers = viewers.split('\n');
-  // console.log(viewers);
 } catch (err) {
-  console.error(err);
+  logColorMsg(`Log file does not exist yet.`);
 }
 
 tmi.on(`join`, (channel, username, self) => {
   // If not in viewers array, add and write to file.
   if (!viewers.includes(username)) {
     viewers.push(username);
-    fs.appendFileSync(`logs/log-${todayStr}.txt`, `${username}\n`);
+    // fs.appendFileSync(`logs/log-${todayStr}.txt`, `${username}\n`);
   }
 });
 

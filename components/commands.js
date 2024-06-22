@@ -1,13 +1,27 @@
 // External dependencies.
 import {createRequire} from 'module';
-import fetch from 'node-fetch';
 import {tmi} from './../vendor/tmi.js';
+import {logColorMsg} from '../helpers.js';
+import fs from 'fs';
 
 // Internal dependencies.
 import {getTwitchChannelInfo, getUserInfo} from '../vendor/twitchAPI.js';
 
 const require = createRequire(import.meta.url);
 const commands = require('./db/commands.json');
+const today = new Date();
+const todayStr = today.toLocaleDateString().split('/').join('-');
+
+// Set up variables.
+let requestQueue = [];
+try {
+  requestQueue = fs.readFileSync(`request-queue/queue-${todayStr}.txt`, `utf8`);
+  requestQueue = requestQueue.trim().split('\n');
+  console.log('😌😌😌');
+  console.log(requestQueue);
+} catch (err) {
+  logColorMsg(`Request queue file does not exist yet.`);
+}
 
 /**
  * Listen for commands in chat.
@@ -18,91 +32,71 @@ const commands = require('./db/commands.json');
  * @return {void}
  */
 async function commandProcessor(channel, tags, message, self) {
-  // Ignore messages from the bot.
-  if (self) {
-    return;
-  }
+	// Ignore messages from the bot.
+	if (self) {
+		return;
+	}
 
-  const cmd = message.split(' ')[0];
+	const msg = message.trim().split(' ');
+	let cmdFulfilled = false;
 
-  const isShoutOut = await shoutOutCmd(cmd, tags, message, channel);
-  const isCurrentSong = await songCmd(cmd, tags, message, channel);
-  const isRecentPlays = await recentPlaysCmd(cmd, tags, message, channel);
+	// Special actions for specific commands.
+	if ('!request' === msg[0] && msg[1]) {
+		cmdFulfilled = requestSong(tags.username, msg);
+	}
+		
+	// Check if command has been fulfilled already...
+	if (cmdFulfilled) {
+		return;
+	}
 
-  // Check its command is the shoutout.
-  if (isShoutOut || isCurrentSong || isRecentPlays) {
-    return;
-  }
+	// Check if messages contains any of the commands in json.
+	for (const prop in commands) {
+		if (msg[0] === `!${prop}`) {
+			tmi.say(channel, commands[prop]);
+			return;
+		}
+	}
+}
 
-  // Check if messages contains any of the commands in json.
-  for (const prop in commands) {
-    if (cmd === `!${prop}`) {
-      tmi.say(channel, commands[prop]);
-      return;
-    }
-  }
+const requestSong = (username, message) => {
+	message.shift();
+	requestQueue.push[message.join(' ')];
+	fs.appendFileSync(`request-queue/queue-${todayStr}.txt`, `@${username} ${message.join(' ')}\n`);
+	return true;
 }
 
 const shoutOutCmd = async (cmd, tags, message, channel) => {
-  if ('!so' !== cmd) {
-    return false;
-  }
+		if ('!so' !== cmd) {
+	return false;
+		}
 
-  // If not moderator or broadcaster, return.
-  if (false === tags.mod && (!tags.badges || !tags.badges.broadcaster)) {
-    return false;
-  }
+		// If not moderator or broadcaster, return.
+		if (false === tags.mod && (!tags.badges || !tags.badges.broadcaster)) {
+	return false;
+		}
 
-  const [, username] = message.split(`@`);
-  if (undefined === username) {
-    return false;
-  }
-  const userObj = await getUserInfo(username);
-  if (userObj.data.length < 0) {
-    return false;
-  }
-  const id = userObj.data[0].id;
-  const channelInfo = await getTwitchChannelInfo(id);
-  const title = channelInfo.data[0].title;
+		const [, username] = message.split(`@`);
+		if (undefined === username) {
+	return false;
+		}
+		const userObj = await getUserInfo(username);
+		if (userObj.data.length < 0) {
+	return false;
+		}
+		const id = userObj.data[0].id;
+		const channelInfo = await getTwitchChannelInfo(id);
+		const title = channelInfo.data[0].title;
 
-  let cmdMsg = commands['so'];
-  cmdMsg = cmdMsg.replace(`{username}`, username);
-  cmdMsg = cmdMsg.replace(`{stream-title}`, title);
-  cmdMsg = cmdMsg.replace(`{url}`, `https://twitch.tv/${username}`);
-  tmi.say(channel, cmdMsg);
-  return true;
+		let cmdMsg = commands['so'];
+		cmdMsg = cmdMsg.replace(`{username}`, username);
+		cmdMsg = cmdMsg.replace(`{stream-title}`, title);
+		cmdMsg = cmdMsg.replace(`{url}`, `https://twitch.tv/${username}`);
+		tmi.say(channel, cmdMsg);
+		return true;
 };
 
-const songCmd = async (cmd, tags, message, channel) => {
-  if ('!song' !== cmd) {
-    return false;
-  }
 
-  const response = await fetch('https://metal-plays-spotify-proxy.herokuapp.com/current');
-  const jsonObj = await response.json();
-  if ('{}' === JSON.stringify(jsonObj)) {
-    tmi.say(channel, 'Nothing is playing... Are you in private session mode?');
-  } else {
-    tmi.say(channel, `The current song is ${jsonObj.trackName} by
-    ${jsonObj.artists}: ${jsonObj.songPreviewURL}`);
-  }
-};
-
-const recentPlaysCmd = async (cmd, tags, message, channel) => {
-  if ('!recent' !== cmd) {
-    return false;
-  }
-
-  const response = await fetch('https://metal-plays-spotify-proxy.herokuapp.com/played');
-  const jsonObj = await response.json();
-  const recentTracks = [];
-  for (let i = 0; i < 5; i++) {
-    recentTracks.push(
-        `${jsonObj[i].artists.join(', ')} - ${jsonObj[i].trackName}`,
-    );
-  }
-  tmi.say(channel, recentTracks.join(', '));
-};
 
 // Initialize command processor on each message sent in chat.
 tmi.on(`message`, commandProcessor);

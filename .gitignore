@@ -3,5 +3,6 @@ node_modules
 log.txt
 streamElementslog.txt
 package-lock.json
-logs
+logs/*
+request-queue/*
 tau
