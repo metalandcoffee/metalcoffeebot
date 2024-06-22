@@ -10,7 +10,7 @@ import connectTAU from './vendor/tau.js';
 
 // Internal dependencies.
 
-import {home, addCommand} from './express.js';
+import {home, queue, addCommand} from './express.js';
 import './components/commands.js';
 import './components/timers.js';
 
@@ -27,6 +27,7 @@ app.listen(port, () => {
 // in a directory named public.
 app.use(express.static(__dirname + '/public'));
 app.get('/', home);
+app.get('/queue', queue);
 app.post('add-command', addCommand);
 
 // Load environment variables.

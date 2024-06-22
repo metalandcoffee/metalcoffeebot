@@ -9,6 +9,9 @@ const __dirname = path.dirname(__filename);
 export const home = (req, res) => {
 	res.sendFile(`${__dirname}/views/index.html`);
 }
+export const queue = (req, res) => {
+	res.send(global.requestQueue);
+}
 
 export const addCommand = (req, res) => {
 	console.log('adding new command...')

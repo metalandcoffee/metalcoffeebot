@@ -13,12 +13,10 @@ const today = new Date();
 const todayStr = today.toLocaleDateString().split('/').join('-');
 
 // Set up variables.
-let requestQueue = [];
+global.requestQueue = [];
 try {
-  requestQueue = fs.readFileSync(`request-queue/queue-${todayStr}.txt`, `utf8`);
-  requestQueue = requestQueue.trim().split('\n');
-  console.log('😌😌😌');
-  console.log(requestQueue);
+	global.requestQueue = fs.readFileSync(`request-queue/queue-${todayStr}.txt`, `utf8`)	
+	global.requestQueue = global.requestQueue.trim().split('\n');
 } catch (err) {
   logColorMsg(`Request queue file does not exist yet.`);
 }
@@ -61,7 +59,7 @@ async function commandProcessor(channel, tags, message, self) {
 
 const requestSong = (username, message) => {
 	message.shift();
-	requestQueue.push[message.join(' ')];
+	global.requestQueue.push(`@${username} ` + message.join(' '));
 	fs.appendFileSync(`request-queue/queue-${todayStr}.txt`, `@${username} ${message.join(' ')}\n`);
 	return true;
 }
