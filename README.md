@@ -20,7 +20,7 @@ Create an `.env` file to store your  tertersecrets. The following environmental 
 | CHANNEL_NAME   | Username of Twitch account to use chatbot for.        |
 | CLIENT_ID   | Twitch Client ID (for Twitch API) Register an application [here](https://dev.twitch.tv/console) to obtain. |
 | CLIENT_SECRET   | Twitch Client Secret (for Twitch API) Register an application [here](https://dev.twitch.tv/console) to obtain.        |
-| SE_JWT   | Optional. If you have a Stream Elements account and want to use their API to receive new events (i.e. follows, subscribes, cheers, etc.)        |
+| SE_JWT   | Optional. If you have a Stream Elements account and want to use their API to receive new events (i.e. followers, subscribers, cheers, etc.)        |
 
 ### **Sample `.env` file**
 ```
