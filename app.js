@@ -36,13 +36,6 @@ config();
 // Connect to Twitch Chat.
 tmi.connect();
 
-// Temp Function
-tmi.on(`message`, function(channel, tags, message, self) {
-  if (!self) {
-    logColorMsg(`${tags.username}: ${message}`);
-  }
-});
-
 // On successful connection...
 const onConnected = (addr, port) => {
   logColorMsg(`Connected to Twitch chat.`);
